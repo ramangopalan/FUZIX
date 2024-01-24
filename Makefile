@@ -25,6 +25,7 @@
 # mb020:	68020 single board
 # micro80:	Bill Shen's micro80 design
 # mini11:	Mini11 68HC11A SBC
+# mizar32a:     Mizar32-A: SimpleMachines, Italy
 # msx1:		MSX1 as a cartridge
 # msx2:		MSX2 with 128K or more and MegaFlashROM+SD interface
 #		(or OpenMSX suitably configured)
@@ -88,7 +89,10 @@
 # zx+3:		ZX Spectrum +3
 # zxdiv:	ZX Spectrum 128K with DivIDE/DivMMC interface
 
-TARGET=sc720
+# TARGET=tm4c129x
+TARGET=mizar32a
+# TARGET=rpipico
+# TARGET=esp8266
 
 include version.mk
 

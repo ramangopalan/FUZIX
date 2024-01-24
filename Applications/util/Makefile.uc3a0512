@@ -1,0 +1,4 @@
+# Disable `fforth' for now.
+# APPOTHER=fforth
+include Makefile.common
+

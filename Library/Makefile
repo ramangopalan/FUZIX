@@ -53,6 +53,9 @@ tools/syscall_8086: tools/syscall_8086.c ../Kernel/include/syscall_name.h
 tools/syscall_lx106: tools/syscall_lx106.c ../Kernel/include/syscall_name.h
 	$(CC) $(CFLAGS) -o $@ $<
 
+tools/syscall_uc3a0512: tools/syscall_uc3a0512.c ../Kernel/include/syscall_name.h
+	$(CC) $(CFLAGS) -o $@ $<
+
 tools/syscall_pdp11: tools/syscall_pdp11.c ../Kernel/include/syscall_name.h
 	$(CC) $(CFLAGS) -o $@ $<
 

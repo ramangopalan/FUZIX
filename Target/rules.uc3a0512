@@ -1,0 +1,39 @@
+#PLATFORM = uc3a0512
+#CC = avr32-gcc
+#ASM = avr32-as
+#AR = avr32-ar
+#STRIP = avr32-strip
+#LINKER = $(FUZIX_ROOT)/Library/link/lduc3a0512
+# LINKER = avr32-gcc
+#CFLAGS = -mpart=uc3a0512 -ffunction-sections -fdata-sections -fno-strict-aliasing -fomit-frame-pointer -fno-builtin -Wall -g -Os -isystem $(ROOT)/Library/include
+#LINKER_OPT = -L$(FUZIX_ROOT)/Library/libs -lc$(PLATFORM) # -pie -static -no-dynamic-linker -z max-page-size=4
+#LIBGCCDIR = $(dir $(shell $(CC) $(CFLAGS) -print-libgcc-file-name))
+# LIBCDIR = $(dir $(shell $(CC) $(CFLAGS) -print-file-name=libc.a))
+# LIBMDIR = $(dir $(shell $(CC) $(CFLAGS) -print-file-name=libm.a))
+# LINKER_OPT += -nostartfiles -nostdlib -Wl,--gc-sections -Wl,--allow-multiple-definition -Wl,--relax -Wl,--direct-data -T $(FUZIX_ROOT)/Library/elf2flt.ld -lc -lgcc -lm # --no-export-dynamic -Bstatic -no-dynamic-linker
+
+#LINKER_OPT += -nostartfiles -nostdlib --gc-sections --allow-multiple-definition --relax --direct-data --emit-relocs -T $(FUZIX_ROOT)/Library/elf2flt.ld -L$(LIBGCCDIR) -lgcc # --no-export-dynamic -Bstatic -no-dynamic-linker
+#STRIP_OPT =
+#CRT0 = $(FUZIX_ROOT)/Library/libs/crt0_$(PLATFORM).o
+#CRT0NS = $(FUZIX_ROOT)/Library/libs/crt0nostdio_$(PLATFORM).o
+#.SUFFIXES: .c .o
+#HOSTCC = cc
+#HAS_FP = yes
+
+PLATFORM = uc3a0512
+CC = avr32-gcc
+ASM = avr32-as
+AR = avr32-ar
+LINKER = $(FUZIX_ROOT)/Library/link/lduc3a0512
+CFLAGS = -ffunction-sections -fdata-sections -fno-strict-aliasing -fomit-frame-pointer -fno-builtin -Wall -Os -isystem $(FUZIX_ROOT)/Library/include -isystem $(FUZIX_ROOT)/Library/include/uc3a0512
+CFLAGS += -Wno-char-subscripts
+LINKER_OPT = -L$(FUZIX_ROOT)/Library/libs
+LIBGCCDIR = $(dir $(shell $(CC) -print-libgcc-file-name))
+LINKER_OPT += --gc-sections --emit-relocs
+LINKER_TAIL = -lcuc3a0512 -L$(LIBGCCDIR) -lgcc -T $(FUZIX_ROOT)/Library/elf2flt.ld #elf2uc3a0512.ld
+CRT0 = $(FUZIX_ROOT)/Library/libs/crt0_uc3a0512.o
+CRT0NS = $(FUZIX_ROOT)/Library/libs/crt0nostdio_uc3a0512.o
+.SUFFIXES: .c .o
+HOSTCC = cc
+HAS_FP = yes
+
