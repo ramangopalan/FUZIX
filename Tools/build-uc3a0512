@@ -1,0 +1,7 @@
+#!/bin/sh
+
+X=`which avr32-gcc`
+if [ "$X" = "" ]; then
+	echo "gcc: avr32-gcc is required"
+	exit 1
+fi
